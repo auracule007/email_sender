@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+from os import getenv
 
 # Load environment variables from .env file
 load_dotenv()
@@ -134,13 +135,27 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Twilio SendGrid
-EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
-EMAIL_HOST = os.getenv('EMAIL_HOST')
-EMAIL_PORT = os.getenv('EMAIL_PORT')  # Convert port to integer
-EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
-EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL')
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+# EMAIL_BACKEND = getenv("EMAIL_BACKEND")
+# EMAIL_HOST = getenv("EMAIL_HOST")
+# EMAIL_HOST_USER = getenv("EMAIL_HOST_USER")
+# EMAIL_HOST_PASSWORD = getenv("EMAIL_HOST_PASSWORD")
+# EMAIL_PORT = getenv("EMAIL_PORT")
+# EMAIL_USE_TSL = getenv("EMAIL_USE_TSL")
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"  # Gmail SMTP server
+EMAIL_PORT = 587  # Use port 587 for TLS
+EMAIL_USE_TLS = True  # Enable TLS
+EMAIL_USE_SSL = False  # Disable SSL
+EMAIL_HOST_USER = "Steveawilliams0573@gmail.com" 
+EMAIL_HOST_PASSWORD = "tyhvyqsbzuvtmzyx" # Replace with your Gmail App Password
+
+# EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+# EMAIL_HOST = os.getenv('EMAIL_HOST')
+# EMAIL_PORT = os.getenv('EMAIL_PORT', 587)
+# EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'  # Convert string to boolean
+# EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', 'False') == 'True'
+# EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 # EMAIL_HOST_USER = "pogooluwa12@gmail.com" 
 # EMAIL_HOST_PASSWORD = "lsaodujtbkyzdkud" # Replace with your Gmail App Password
