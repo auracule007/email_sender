@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: email
+    buildCommand: "./build.sh"
+    env: python
+    startCommand:  "gunicorn email.wsgi:application"
